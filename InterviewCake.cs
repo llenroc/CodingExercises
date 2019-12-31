@@ -15,7 +15,9 @@ namespace InterviewCake
             // Console.WriteLine("Test Jagged");
             // TestJagged();
 
-            Triplets.TestTriplets();
+            // Triplets.TestTriplets();
+
+            HighestTripletPruduct.GetHighestTripletPruductTest();
         }
 
         private static void TestMultiDimentional()
