@@ -17,7 +17,9 @@ namespace InterviewCake
 
             // Triplets.TestTriplets();
 
-            HighestTripletPruduct.GetHighestTripletPruductTest();
+            // HighestTripletPruduct.GetHighestTripletPruductTest();
+
+            StockProfit.GetMaxProfitTest();
         }
 
         private static void TestMultiDimentional()
