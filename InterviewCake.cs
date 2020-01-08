@@ -19,7 +19,11 @@ namespace InterviewCake
 
             // HighestTripletPruduct.GetHighestTripletPruductTest();
 
-            StockProfit.GetMaxProfitTest();
+            // StockProfit.GetMaxProfitTest();
+
+            //BinaryTree.IsBalanceTest();
+            //BinaryTree.IsBSTTest();
+            BinaryTree.GetSecondLargestTest();
         }
 
         private static void TestMultiDimentional()
