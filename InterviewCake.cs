@@ -15,15 +15,16 @@ namespace InterviewCake
             // Console.WriteLine("Test Jagged");
             // TestJagged();
 
+
+            Sorting.FindRotationIndexTest();
+
             // Triplets.TestTriplets();
-
             // HighestTripletPruduct.GetHighestTripletPruductTest();
-
             // StockProfit.GetMaxProfitTest();
 
             //BinaryTree.IsBalanceTest();
             //BinaryTree.IsBSTTest();
-            BinaryTree.GetSecondLargestTest();
+            //BinaryTree.GetSecondLargestTest();
         }
 
         private static void TestMultiDimentional()
