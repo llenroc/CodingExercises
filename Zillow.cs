@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 namespace InterviewCake
 {
-    
-
     public static class Zillow
     {
         public static void GetOptimalGasPurchaseTest()
