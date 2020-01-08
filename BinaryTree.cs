@@ -9,11 +9,11 @@ namespace InterviewCake
         {
             var root = new BinaryTreeNode(50);
             var a = root.InsertLeft(30);
-            //var b = root.InsertRight(80);
+            var b = root.InsertRight(80);
             a.InsertLeft(10);
             a.InsertRight(40).InsertLeft(35).InsertLeft(32);
-            //b.InsertLeft(70);
-            //b.InsertRight(90).InsertLeft(85).InsertRight(87);
+            b.InsertLeft(70);
+            b.InsertRight(90).InsertLeft(85).InsertRight(87);
 
             return root;
         }
