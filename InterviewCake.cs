@@ -16,7 +16,7 @@ namespace InterviewCake
             // TestJagged();
 
 
-            Sorting.FindRotationIndexTest();
+            //Sorting.FindRotationIndexTest();
 
             // Triplets.TestTriplets();
             // HighestTripletPruduct.GetHighestTripletPruductTest();
@@ -25,6 +25,8 @@ namespace InterviewCake
             //BinaryTree.IsBalanceTest();
             //BinaryTree.IsBSTTest();
             //BinaryTree.GetSecondLargestTest();
+
+            Zillow.GetOptimalGasPurchaseTest();
         }
 
         private static void TestMultiDimentional()

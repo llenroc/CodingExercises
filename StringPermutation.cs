@@ -1,11 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exercises
+namespace InterviewCake
 {
     public static class StringPermutation
     {
-        public static ISet<string> GetPermutations(String inputString)
+        public static void GetPermutationsTest()
+        {
+            var result = GetPermutations("input");
+
+            foreach (var s in result)
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        public static HashSet<string> GetPermutations(String inputString)
         {
             // Generate all permutations of the input string
             HashSet<string> result = new HashSet<string>();
@@ -22,18 +32,18 @@ namespace Exercises
             return result;
         }
 
-        private static HashSet<string> Permute(string s, int l, int r, HashSet<string> result)
+        private static HashSet<string> Permute(string s, int ini, int end, HashSet<string> result)
         {
-            if (l == r)
+            if (ini == end)
             {
                 result.Add(s);
             }
         
-            for (int i = l; i <= r; i++)
+            for (int i = ini; i <= end; i++)
             {
-                s = Swap(s, l, i);
-                result = Permute(s, l + 1, r, result);
-                s = Swap(s, l, i);
+                s = Swap(s, ini, i);
+                result = Permute(s, ini + 1, end, result);
+                s = Swap(s, ini, i);
             }
             return result;
         }

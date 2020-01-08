@@ -1,58 +1,56 @@
 ﻿using System;
 
-namespace Exercises
+namespace InterviewCake
 {
-    partial class Program
+    public static class CafeOrderChecker
     {
-        public static class CafeOrderChecker
+        public static bool IsFirstComeFirstServed(int[] takeOutOrders, int[] dineInOrders, int[] servedOrders)
         {
-            public static bool IsFirstComeFirstServed(int[] takeOutOrders, int[] dineInOrders, int[] servedOrders)
+            if (servedOrders == null && (takeOutOrders != null || dineInOrders != null))
             {
-                if (servedOrders == null && (takeOutOrders != null || dineInOrders != null))
+                return false;
+            }
+    
+            if (servedOrders != null)
+            {
+                int len = takeOutOrders == null ? 0 : takeOutOrders.Length;
+                len += dineInOrders == null ? 0 : dineInOrders.Length;
+                if (servedOrders.Length != len)
                 {
                     return false;
                 }
-        
-                if (servedOrders != null)
+            }
+    
+            // Check if we're serving orders first-come, first-served
+            int previousIn = -1; // In index
+            int previousOut = -1; // Out index
+            int x = 0;
+            int y = 0;
+    
+            for (int i = 0; i < servedOrders.Length; i++)
+            {
+                if (y < takeOutOrders.Length && servedOrders[i] == takeOutOrders[y])
                 {
-                    int len = takeOutOrders == null ? 0 : takeOutOrders.Length;
-                    len += dineInOrders == null ? 0 : dineInOrders.Length;
-                    if (servedOrders.Length != len)
+                    if (previousOut > takeOutOrders[y])
                     {
                         return false;
                     }
+                    previousOut = takeOutOrders[y++];
                 }
         
-                // Check if we're serving orders first-come, first-served
-                int previousIn = -1; // In index
-                int previousOut = -1; // Out index
-                int x = 0;
-                int y = 0;
-        
-                for (int i = 0; i < servedOrders.Length; i++)
+                if (x < dineInOrders.Length && servedOrders[i] == dineInOrders[x])
                 {
-                    if (y < takeOutOrders.Length && servedOrders[i] == takeOutOrders[y])
+                    if (previousIn > dineInOrders[x])
                     {
-                        if (previousOut > takeOutOrders[y])
-                        {
-                            return false;
-                        }
-                        previousOut = takeOutOrders[y++];
+                        return false;
                     }
+                    previousIn = dineInOrders[x++];
             
-                    if (x < dineInOrders.Length && servedOrders[i] == dineInOrders[x])
-                    {
-                        if (previousIn > dineInOrders[x])
-                        {
-                            return false;
-                        }
-                        previousIn = dineInOrders[x++];
-                
-                    }
                 }
-        
-                return (x == dineInOrders.Length && y == takeOutOrders.Length);
             }
+    
+            return (x == dineInOrders.Length && y == takeOutOrders.Length);
         }
     }
+
 }

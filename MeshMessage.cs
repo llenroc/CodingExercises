@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exercises
+namespace InterviewCake
 {
     public static class MeshMessage
     {
