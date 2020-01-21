@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 namespace InterviewCake
 {
     public static class Zillow
@@ -66,6 +67,24 @@ namespace InterviewCake
             }
 
         } 
+
+        public static void MicrosoftTest()
+        {
+            Console.WriteLine(Microsoft(new [] {1,1,3,3}, 2));
+        }
+
+        public static bool Microsoft(int[] A, int K) 
+        {
+            int n = A.Length;
+            for (int i = 0; i < n - 1; i++) {
+                if (A[i] > K || A[i] != K) // change this line accordingly
+                    return false;
+            }
+            if (K < A[0] && A[n - 1] < K) // change this line accordingly
+                return false;
+            else
+                return true;
+        }
     }
 
 }

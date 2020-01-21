@@ -7,26 +7,47 @@ namespace InterviewCake
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Test MultiDimentional");
+            /* MISCELANEOUS */
             // TestMultiDimentional();
-            
-            // Console.WriteLine("-------------------------");
-            
-            // Console.WriteLine("Test Jagged");
             // TestJagged();
 
+            /* Zillow Screen */
+            // Zillow.GetOptimalGasPurchaseTest();
+            // Zillow.MicrosoftTest();
 
+            /* Interview.io practice Interview */
+            // InterviewIo.TestTriplets();
+            
+            /* Lowe's Screen */
+            // TODO:
+            // Lowes.ToJsonTest();
+
+            /* Strivr Screen */
+            //Strivr.GetPlayerScoreTest();
+
+
+            /* 3 - GREEDY ALGORITHMS */
+            // Greedy.GetHighestTripletPruductTest();
+            // Greedy.GetMaxStockProfit();
+
+
+            /* 4 - SORTING */
             //Sorting.FindRotationIndexTest();
 
-            // Triplets.TestTriplets();
-            // HighestTripletPruduct.GetHighestTripletPruductTest();
-            // StockProfit.GetMaxProfitTest();
 
+            /* 5 - BINARY TREE & GRAPH */
             //BinaryTree.IsBalanceTest();
             //BinaryTree.IsBSTTest();
             //BinaryTree.GetSecondLargestTest();
+            // TODO: Include test methods for Graph.cs
 
-            Zillow.GetOptimalGasPurchaseTest();
+
+            /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
+            //Recursion.GetPermutationsTest();
+            //Recursion.PermuteTest();
+            //DynamicProgramming.GetMinNumberOfCoinsTest();
+            //DynamicProgramming.GetNumberOfComboCoinsTest();
+            DynamicProgramming.MaxDuffelBagValueTest();
         }
 
         private static void TestMultiDimentional()
