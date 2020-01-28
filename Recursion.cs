@@ -7,7 +7,7 @@ namespace InterviewCake
     {
         public static void GetPermutationsTest()
         {
-            var result = GetPermutations("0123456789");
+            var result = GetPermutations("012");
 
             foreach (var s in result)
             {
@@ -87,5 +87,80 @@ namespace InterviewCake
             return result;
         }
         
+        public static void FindNumberOfCoinComboTest()
+        {
+            //Console.WriteLine("Total Combinations: " + FindNumberOfCoinCombo(30, new [] {10, 15, 5}));
+            PrintCombos(4, new [] {1, 2, 3}, 0, new LinkedList<int>());
+        }
+
+        public static int FindNumberOfCoinCombo(int amount, int[] coins)
+        {
+            var result = 0;
+
+            System.Console.WriteLine("Amount: $" + amount);
+            System.Console.Write("Coins: ");
+            foreach (var item in coins)
+            {
+                System.Console.Write(item + " ");
+            }
+            System.Console.WriteLine();
+            result = GetCombos(amount, coins, 0, new LinkedList<int>());
+
+            return result;
+        }
+
+        private static int GetCombos(int amount, int[] coins, int currCoin, LinkedList<int> comboCoins)
+        {
+            if (amount < 0) 
+            {
+                // comboCoins.RemoveLast();
+                return 0;
+            }
+             
+            if (amount == 0)
+            {
+                // foreach (var item in comboCoins)
+                // {
+                //     System.Console.Write(item + " ");
+                // }
+                // System.Console.WriteLine();
+                System.Console.Write(coins[currCoin] + " ");
+                return 1;
+            }
+            System.Console.Write(coins[currCoin] + " ");
+
+            var combos = 0;
+            for (int coin = currCoin; coin < coins.Length; coin++)
+            {
+                System.Console.WriteLine();
+                // comboCoins.AddFirst(coins[coin]);
+                var tmp = GetCombos(amount - coins[coin], coins, coin, comboCoins);
+                combos += tmp;
+                // comboCoins.RemoveLast();
+            }
+
+            return combos;
+        }
+
+        
+        private static void PrintCombos(int amount, int[] coins, int currCoin, LinkedList<int> comboCoins)
+        {
+            if (amount < 0) return; 
+            if (amount == 0)
+            {
+                foreach (var item in comboCoins)
+                {
+                    System.Console.Write(item + " ");
+                }
+                System.Console.WriteLine();
+            }
+
+            for (int coin = currCoin; coin < coins.Length; coin++)
+            {
+                comboCoins.AddFirst(coins[coin]);
+                GetCombos(amount - coins[coin], coins, coin, comboCoins);
+                comboCoins.RemoveLast();
+            }
+        }
     }
 }

@@ -1,17 +1,19 @@
 using System;
+using System.Collections.Generic;
 
 namespace InterviewCake
 {
     public static class DynamicProgramming
     {
-        public static void GetNumberOfComboCoinsTest()
+        public static void GetAllNumberOfComboCoinsTest()
         {
-            Console.WriteLine(GetNumberOfComboCoins(30, new [] {10, 15, 5}));
+            Console.WriteLine(GetAllNumberOfComboCoins(30, new [] {10, 15, 5}));
         }
 
         public static void GetMinNumberOfCoinsTest()
         {
-            Console.WriteLine(GetMinNumberOfCoins(30, new [] {25, 15, 1}));
+            //Console.WriteLine(GetMinNumberOfCoins(30, new [] {25, 15, 1}));
+            Console.WriteLine(GetMinNumberOfCoins(10, new [] {3, 5, 2}));
         }
 
         public static void MaxDuffelBagValueTest()
@@ -25,7 +27,12 @@ namespace InterviewCake
             System.Console.WriteLine(MaxDuffelBagValue(cakes, 20));
         }
 
-        public static int GetNumberOfComboCoins(int amount, int[] coins)
+        public static void GenMinNumberOfCoinsComboTest()
+        {
+            Console.WriteLine(GenMinNumberOfCoinsCombo(11, new [] {3, 5, 2}));
+        }
+
+        public static int GetAllNumberOfComboCoins(int amount, int[] coins)
         {
             if (coins == null || amount < 0) throw new System.ArgumentException("Coins can not be null and amount shoul be positive"); 
             
@@ -45,7 +52,6 @@ namespace InterviewCake
 
             return countTable[amount];
         }
-
 
         public static int GetMinNumberOfCoins(int amount, int[] coins)
         {
@@ -73,35 +79,168 @@ namespace InterviewCake
             return memo[amount];
         }
 
-        public static long MaxDuffelBagValue(CakeType[] cakes, int bagCapacity)
+        public static List<int> GenMinNumberOfCoinsCombo(int amount, int[] coins)
         {
-            var memo = new long[bagCapacity + 1];
+            var result = new List<int>();
+            var memo = GenMinNumberOfCoinsComboMemo(amount, coins);
+
+            for (var row = 0; row < coins.Length; row++)
+            {
+                for (var i = row; i < coins.Length; row++)
+                {
+
+                }
+            }
+
+            return result;
+        }
+
+        private static int[][] GenMinNumberOfCoinsComboMemo(int amount, int[] coins)
+        {
+            var memo = new int[coins.Length][];
+            
+            // Initiallize Col[0] with 1 for all the rows
+            for (var row = 0; row < coins.Length; row++)
+            {   
+                var cols = new int[amount + 1];
+                cols[0] = 0;
+                for (int i = 1; i < cols.Length; i++)
+                {
+                    cols[i] = int.MaxValue;
+                }
+                memo[row] = cols;
+            }
+
+            for (var col = 1; col <= amount; col++)
+            {
+                var row = 0;
+                foreach (var c in coins)
+                {
+                    if (row > 0 && memo[row][col] == int.MaxValue && memo[row - 1][col] != int.MaxValue)
+                    {
+                        memo[row][col] = memo[row - 1][col];
+                    }
+                    if (c <= col && memo[row][col - c] != int.MaxValue &&  memo[row][col - c] + 1 < memo[row][col])
+                    {
+                        memo[row][col] = memo[row][col - c] + 1;
+                    }
+                    row++;
+                }
+            }           
+            return memo;
+        }
+
+        public static long MaxDuffelBagValue(CakeType[] cakes, int bagWeightCapacity)
+        {
+            var memo = new long[bagWeightCapacity + 1];
 
             for (var i = 1; i < memo.Length; i++)
             {
                 long currentMaxValue = 0;
-                foreach (var cake in cakes)
+                foreach (var cakeType in cakes)
                 {
-                    if (i >= cake.Size)
+                    if (i >= cakeType.Weight)
                     {
-                        currentMaxValue = Math.Max(cake.Price + memo[i - cake.Size], currentMaxValue);
+                        currentMaxValue = Math.Max(cakeType.Price + memo[i - cakeType.Weight], currentMaxValue);
                     }
                 }
                 memo[i] = currentMaxValue;
             }
 
-            return memo[bagCapacity];
+            return memo[bagWeightCapacity];
         }
+
+        public static void LongestPalindromSubsequenceTest()
+        {
+            System.Console.WriteLine(LongestPalindromSubsequenceDom("agbdba"));
+        }
+
+        public static int LongestPalindromSubsequence(string str)
+        {
+            var memo = new int[str.Length][];
+
+            // define cols (number of cols = memo.Length : Zero based index)
+            for (var row = 0; row < memo.Length; row++)
+            {   
+                memo[row] = new int[str.Length];
+            }
+
+            // initialize when Lenght is 1 char only
+            for(int i=0; i < str.Length; i++)
+            {
+                memo[i][i] = 1;
+            }
+
+            for(int lenght = 2; lenght <= str.Length; lenght++)
+            {
+                for(int i = 0; i < str.Length - lenght + 1; i++)
+                {
+                    int j = i + lenght - 1;
+                    if(lenght == 2 && str[i] == str[j])
+                        memo[i][j] = 2;
+                    else if(str[i] == str[j])
+                        memo[i][j] = memo[i + 1][j-1] + 2;
+                    else
+                        memo[i][j] = Math.Max(memo[i + 1][j], memo[i][j - 1]);
+                }
+            }
+
+            return memo[0][str.Length-1];
+        }
+
+
+        public static int LongestPalindromSubsequenceDom(string str)
+        {
+            var memo = new int[str.Length];
+
+            // initialize when Lenght is 1 char only
+            for(int i=0; i < str.Length; i++)
+            {
+                memo[i] = 1;
+            }
+
+            for(int lenght = 2; lenght <= str.Length; lenght++)
+            {
+                for(int i = 0; i < str.Length - lenght + 1; i++)
+                {
+                    int j = i + lenght - 1;
+                    if(str[i] == str[j])
+                        memo[j] = memo[i + 1] + 2;
+                    else
+                        memo[i] = Math.Max(memo[i + 1], memo[i]);
+                }
+            }
+
+            return memo[str.Length - 1];
+        }
+
+        public static void GetMaxProductOfPalindromeSubsequencesTest()
+        {
+            System.Console.WriteLine(GetMaxProductOfPalindromeSubsequences("eeegeeksforskeeggeeks"));
+        }
+
+        public static int GetMaxProductOfPalindromeSubsequences(string input)
+        {
+            var result = 0;
+            for (var i = 1; i < input.Length - 1; i++)
+            {
+                var left = input.Substring(0, i);
+                var right = input.Substring(i);
+                result = Math.Max(result, LongestPalindromSubsequence(left) * LongestPalindromSubsequence(right));
+            }
+            return result;
+        }
+
     }
 
     public class CakeType
     {
-        public int Size { get; }
+        public int Weight { get; }
         public int Price { get; }
 
-        public CakeType(int size, int price)
+        public CakeType(int weight, int price)
         {
-            Size = size;
+            Weight = weight;
             Price = price;
         }
     }

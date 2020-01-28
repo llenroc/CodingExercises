@@ -45,9 +45,20 @@ namespace InterviewCake
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
             //Recursion.GetPermutationsTest();
             //Recursion.PermuteTest();
+            //Recursion.FindNumberOfCoinComboTest();
+            //Recursion.SubSequencesTest();
+
             //DynamicProgramming.GetMinNumberOfCoinsTest();
-            //DynamicProgramming.GetNumberOfComboCoinsTest();
-            DynamicProgramming.MaxDuffelBagValueTest();
+            //DynamicProgramming.GetAllNumberOfComboCoinsTest();
+            //DynamicProgramming.MaxDuffelBagValueTest();
+            //DynamicProgramming.GenMinNumberOfCoinsComboTest();
+            //DynamicProgramming.LongestPalindromSubsequenceTest();
+            //DynamicProgramming.GetMaxProductOfPalindromeSubsequencesTest();
+
+
+            /* 7 - Queues and Stacks */
+            // QueueStack.PhoneNumberLetterCombinationsTest();
+            QueueStack.FindMazeExitTest();
         }
 
         private static void TestMultiDimentional()
@@ -116,5 +127,7 @@ namespace InterviewCake
             
             ArrayExercise.Jagged(jagged);
         }
+
+
     }
 }
