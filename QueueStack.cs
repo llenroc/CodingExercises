@@ -11,7 +11,7 @@ namespace InterviewCake
         public static void PhoneNumberLetterCombinationsTest() 
         {
             var phoneNumber = new []{ 5, 3 };
-            var result = PhoneNumberLetterCombinations(phoneNumber, phoneNumber.Length);
+            var result = PhoneNumberLetterCombinations(phoneNumber, phoneNumber);
             foreach (var item in result)
             {
                 System.Console.WriteLine(item);
@@ -19,7 +19,7 @@ namespace InterviewCake
         } 
         
         // From https://www.geeksforgeeks.org/iterative-letter-combinations-of-a-phone-number/
-        public static List<string> PhoneNumberLetterCombinations(int[] phoneNumber, int n)
+        public static List<string> PhoneNumberLetterCombinations(int[] phoneNumber, int[] n)
         {
             // To store the generated letter combinations 
             List<String> list = new List<String>(); 
@@ -31,7 +31,7 @@ namespace InterviewCake
                 String s = q.Dequeue(); 
         
                 // If complete word is generated push it in the list 
-                if (s.Length == n) 
+                if (s.Length == n.Length) 
                 {
                     list.Add(s);
                 } 
