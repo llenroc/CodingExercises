@@ -1,7 +1,5 @@
 # Interview Cake
 
-## Pages
-
 This project contains exercises from the Intervie Cake Full course
 
 ## Resources
