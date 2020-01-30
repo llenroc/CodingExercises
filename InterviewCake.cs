@@ -25,6 +25,8 @@ namespace InterviewCake
             /* Strivr Screen */
             //Strivr.GetPlayerScoreTest();
 
+            /* Foursquare Screen */
+            Foursquare.MaxFunTest();
 
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
@@ -57,8 +59,8 @@ namespace InterviewCake
 
 
             /* 7 - Queues and Stacks */
-            // QueueStack.PhoneNumberLetterCombinationsTest();
-            QueueStack.FindMazeExitTest();
+            //QueueStack.PhoneNumberLetterCombinationsTest();
+            //QueueStack.FindMazeExitTest();
         }
 
         private static void TestMultiDimentional()
