@@ -72,7 +72,8 @@ public static class Foursquare
     */
 
 
-    private static int GetMaxScore(List<List<int>> employees) {
+    private static int GetMaxScore(List<List<int>> employees) 
+    {
         var employeeDataMap = new Dictionary<int, Dictionary<int, int>>();
         var scoreMap = new Dictionary<int, int>();
 
@@ -89,17 +90,17 @@ public static class Foursquare
         return Math.Max(res[0], res[1]);
     }
 
-    private static int[] CalcScoreDFS(Dictionary<int, Dictionary<int, int>> employeeDataMap, Dictionary<int, int> scoreMap, int cur)
+    private static int[] CalcScoreDFS(Dictionary<int, Dictionary<int, int>> employeeDataMap, Dictionary<int, int> scoreMap, int currEmployeeId)
      {
-        if(!employeeDataMap.ContainsKey(cur)) 
+        if(!employeeDataMap.ContainsKey(currEmployeeId)) 
         {
-            return new [] {0, scoreMap[cur]};
+            return new [] {0, scoreMap[currEmployeeId]};
         }
 
         int[] res = new int[2]; //0 not include, 1 include
         var cache = new List<int[]>();
 
-        foreach(var nei in employeeDataMap[cur]) 
+        foreach(var nei in employeeDataMap[currEmployeeId]) 
         {
             cache.Add(CalcScoreDFS(employeeDataMap, scoreMap, nei.Key));
         }
@@ -111,7 +112,7 @@ public static class Foursquare
         }
 
         int score = 0;
-        res[1] += (scoreMap.TryGetValue(cur, out score)) ? score : 0;
+        res[1] += (scoreMap.TryGetValue(currEmployeeId, out score)) ? score : 0;
 
         return res;
     }
@@ -120,7 +121,7 @@ public static class Foursquare
     public static int[] MaxFunRecursive(
         List<List<int>> employees, 
         List<int> employeeData, 
-        Dictionary<int, List<int>> directsMap, 
+        Dictionary<int, List<int>> employeeDataMap, 
         Dictionary<int, int> employeesScoreMap, 
         int[] score,
         bool tmp)
@@ -130,20 +131,20 @@ public static class Foursquare
         var employeeScore = employeeData[2];
         
         // base case : return
-        if (!directsMap.ContainsKey(currEmployeeId))
+        if (!employeeDataMap.ContainsKey(currEmployeeId))
         {
-            score[0] = GetScoresOfDirects(employees, directsMap[managerId]); // invited: get sum of the score from Maneger's directs
+            score[0] = GetScoresOfDirects(employees, employeeDataMap[managerId]); // invited: get sum of the score from Maneger's directs
             score[1] += employeeScore; // not invited: just add the sum of the directs
     
             return score;
         }
         
         // Recursive Call
-        var currEmployeeDirects = tmp ? directsMap[currEmployeeId] : directsMap[managerId];
+        var currEmployeeDirects = tmp ? employeeDataMap[currEmployeeId] : employeeDataMap[managerId];
         foreach (var direct in currEmployeeDirects)
         {
             var directData = GetEmployeeData(employees, direct);
-            score = MaxFunRecursive(employees, directData, directsMap, employeesScoreMap, score, true);
+            score = MaxFunRecursive(employees, directData, employeeDataMap, employeesScoreMap, score, true);
         }
         
         return score;
