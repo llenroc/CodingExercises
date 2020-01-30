@@ -72,6 +72,7 @@ public static class Foursquare
     */
 
 
+    // From https://leetcode.com/discuss/interview-question/447750/Google-onsite-interview-round
     private static int GetMaxScore(List<List<int>> employees) 
     {
         var employeeDataMap = new Dictionary<int, Dictionary<int, int>>();
