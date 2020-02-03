@@ -21,31 +21,30 @@ namespace InterviewCake
         // From https://www.geeksforgeeks.org/iterative-letter-combinations-of-a-phone-number/
         public static List<string> PhoneNumberLetterCombinations(int[] phoneNumber, int[] n)
         {
-            // To store the generated letter combinations 
-            List<String> list = new List<String>(); 
-            Queue<String> q = new Queue<String>(); 
-            q.Enqueue(""); 
-        
-            while(q.Count != 0)  
-            { 
-                String s = q.Dequeue(); 
-        
-                // If complete word is generated push it in the list 
-                if (s.Length == n.Length) 
+            var result = new List<string>();
+            var q = new Queue<string>();
+            
+            q.Enqueue("");
+
+            while (q.Count > 0)
+            {
+                var s = q.Dequeue();
+                if (s.Length == n.Length)
                 {
-                    list.Add(s);
-                } 
+                    result.Add(s);
+                }
                 else
-                { 
-                    var currentPhoneDigit = phoneNumber[s.Length];
-                    var chars = table[currentPhoneDigit];
-                    for (int i = 0; i < chars.Length; i++) 
-                    { 
-                        q.Enqueue(s + chars[i]); 
-                    } 
-                }  
-            } 
-            return list; 
+                {
+                    var digit = phoneNumber[s.Length];
+                    var chars = table[digit];
+                    for (var i = 0; i < chars.Length; i++)
+                    {
+                        q.Enqueue(s + chars[i]);
+                    }
+                }
+            }
+
+            return result;
         }
 
         public static void FindMazeExitTest()
@@ -68,6 +67,7 @@ namespace InterviewCake
             q.Enqueue(new Tuple<int, int>(0, 0));
             maze[0][0] = -1;
 
+            // BFS
             while (q.Count > 0)
             {
                 Tuple<int, int> current = q.Dequeue();

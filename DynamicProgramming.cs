@@ -189,6 +189,7 @@ namespace InterviewCake
         }
 
 
+        // this approach use only an array to memonized the values (instead of a matrix)
         public static int LongestPalindromSubsequenceDom(string str)
         {
             var memo = new int[str.Length];
@@ -231,6 +232,39 @@ namespace InterviewCake
             return result;
         }
 
+        // Some reference: https://www.youtube.com/watch?v=fV-TF4OvZpk
+        public static int[] FindSubsetWithBigestSum()
+        {
+            return new int[] {0};
+        }
+
+
+        public static void LongestIncreasingSubsequenceLengthTest()
+        {
+            System.Console.WriteLine(LongestIncreasingSubsequenceLength(new int[] {9,5,21,28,2,7,19,22,1,6}));
+        }
+
+        public static int LongestIncreasingSubsequenceLength(int[] arr)
+        {
+            var result = 0;
+            var memo = new int[arr.Length];
+            // init memo values
+            for (var i = 0; i < arr.Length; i++)
+            {
+                memo[i] = 1;
+            }
+
+            for (var i = 1; i < arr.Length; i++)
+            {
+                for (var j = 0; j < i; j++)
+                {
+                    if (arr[i] < arr[j]) continue;
+                    memo[i] = Math.Max(memo[j], memo[j] + 1);
+                    result = Math.Max(result, memo[i]);
+                }
+            }
+            return result;
+        }
     }
 
     public class CakeType

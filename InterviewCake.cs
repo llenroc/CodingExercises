@@ -26,7 +26,7 @@ namespace InterviewCake
             //Strivr.GetPlayerScoreTest();
 
             /* Foursquare Screen */
-            Foursquare.MaxFunTest();
+            // Foursquare.MaxFunTest();
 
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
@@ -42,6 +42,7 @@ namespace InterviewCake
             //BinaryTree.IsBSTTest();
             //BinaryTree.GetSecondLargestTest();
             // TODO: Include test methods for Graph.cs
+            Graph.GetShortestPathCostTest();
 
 
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
@@ -56,7 +57,7 @@ namespace InterviewCake
             //DynamicProgramming.GenMinNumberOfCoinsComboTest();
             //DynamicProgramming.LongestPalindromSubsequenceTest();
             //DynamicProgramming.GetMaxProductOfPalindromeSubsequencesTest();
-
+            //DynamicProgramming.LongestIncreasingSubsequenceLengthTest();
 
             /* 7 - Queues and Stacks */
             //QueueStack.PhoneNumberLetterCombinationsTest();

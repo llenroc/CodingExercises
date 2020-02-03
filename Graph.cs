@@ -98,10 +98,90 @@ namespace InterviewCake
             return null;
         }
 
-        // Theory:  https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
-        public static int GetShortestPathCost()
+        public static void GetShortestPathCostTest()
         {
-            return -1;
+            var graph = new Node[5];
+            graph[0] = new Node(1, new List<Tuple<int, int>>() { new Tuple<int, int>(2, 10), new Tuple<int, int>(3, 7), new Tuple<int, int>(4, 9) });
+            graph[1] = new Node(2, new List<Tuple<int, int>>() { new Tuple<int, int>(3, 1), new Tuple<int, int>(5, 6) });
+            graph[2] = new Node(3, new List<Tuple<int, int>>() { new Tuple<int, int>(5, 11) });
+            graph[3] = new Node(4, new List<Tuple<int, int>>() { new Tuple<int, int>(3, 8) });
+            graph[4] = new Node(5, new List<Tuple<int, int>>());
+
+            int cost;
+            var path = GetShortestPathCost(graph, 5, out cost);
+            foreach (var nodeId in path)
+            {
+                System.Console.WriteLine(nodeId);
+            }
+            System.Console.WriteLine("Cost: " + cost);
+        }
+
+        public class Node
+        {
+            public int NodeId {get; set;}
+            public List<Tuple<int, int>> Neighbors {get; set;}
+
+            public Node (int nodeId, List<Tuple<int, int>> neighbors)
+            {
+                NodeId = nodeId;
+                Neighbors = neighbors;
+            }
+        }
+
+        // Theory:  https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
+        public static int[] GetShortestPathCost(Node[] graph, int end, out int cost) // graph = Node[] => NodeId and Neighbors (Node, cost)
+        {
+            var visited = new HashSet<int>();
+            var unvisited = new HashSet<int>();
+            var costTable = new Dictionary <int, Tuple<int, int>>(); // Key: Node, Value: [cost, parentNode]
+
+            foreach (var n in graph)
+            {
+                unvisited.Add(n.NodeId);
+                costTable.Add(n.NodeId, new Tuple<int, int>(int.MaxValue, n.NodeId));
+            }
+
+            foreach (var n in graph)
+            {
+                var currCost = costTable[n.NodeId].Item1 != int.MaxValue ? costTable[n.NodeId].Item1 : 0;
+
+                foreach (var neighbor in n.Neighbors)
+                {
+                    if (visited.Contains(neighbor.Item1)) continue;
+
+                    var neigId = neighbor.Item1;
+                    var neigCost = neighbor.Item2;
+                    var tmpCost = currCost + neigCost;
+
+                    if (costTable[neigId].Item1 > tmpCost)
+                    {
+                        costTable[neigId] = new Tuple<int, int>(tmpCost, n.NodeId); // cost and parent
+                    }
+                }
+
+                unvisited.Remove(n.NodeId);
+                visited.Add(n.NodeId);
+            }
+
+            var path = new Stack<int>();
+            path.Push(end);
+            var parent = costTable[end];
+            while (true)
+            {
+                path.Push(parent.Item2);
+                parent = costTable[parent.Item2];
+                
+                if (path.Peek() == graph[0].NodeId) break;
+            }
+            var resultPath = new int[path.Count];
+            var i = 0;
+            while (path.Count > 0)
+            {
+                resultPath[i++] = path.Pop();
+            }
+
+            cost = costTable[end].Item1;
+            return resultPath;
         }
     }
 }

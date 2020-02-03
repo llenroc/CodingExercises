@@ -59,7 +59,7 @@ namespace InterviewCake
 
         public static void PermuteTest()
         {
-            var result = Permute("domingo");
+            var result = Permute("dom");
             System.Console.WriteLine("Total Permutations: " + result.Count);
             foreach (var s in result)
             {
@@ -70,18 +70,17 @@ namespace InterviewCake
         // Easiest implementation and very friendly to read/understand (Cons: Bad performance)
         public static HashSet<string> Permute(string s)
         {
-            if (s.Length <= 1) return new HashSet<string>() { s }; 
-
-            var sExceptLastChar = s.Substring(0, s.Length - 1);
-            char sLastChar = s[s.Length - 1];
-            var permutations = Permute(sExceptLastChar);
+            if (s.Length <= 1) return new HashSet<string>(){s};
 
             var result = new HashSet<string>();
-            foreach (var p in permutations)
+            var fisrt = s[0];
+            var remainder = s.Substring(1);
+            var words = Permute(remainder);
+            foreach(var w in words)
             {
-                for (var i = 0; i <= p.Length; i++)
+                for (var i = 0; i <= w.Length; i++) // use "<=" because we are adding 1 char to the word len ("first") 
                 {
-                    result.Add(p.Substring(0, i) + sLastChar + p.Substring(i));
+                    result.Add(w.Substring(0, i) + fisrt + w.Substring(i));
                 }
             }
             return result;
