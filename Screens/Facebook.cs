@@ -39,12 +39,12 @@ namespace InterviewCake
                 }
             }
             if (i == -1) return -1;
-            
+
             var j = i + 1;
             for (; i <= s.Length - charSet.Length; i++)
             {
                 var c = s[i];
-                while (j < s.Length)
+                for (; j < s.Length; j++)
                 {
                     var cc = s[j];
                     if (freqTable.ContainsKey(cc)) freqTable[cc]++;
@@ -52,11 +52,13 @@ namespace InterviewCake
                     if (IsValidSubstring(freqTable))
                     {
                         if (result == -1 || result > j - i) result = j - i + 1;
+
+                        // decrease the freq counter
                         if (freqTable.ContainsKey(c)) freqTable[c]--;
                         if (freqTable.ContainsKey(cc)) freqTable[cc]--;
+                        
                         break;
                     }
-                    j++;
                 }
             }
             return result;
