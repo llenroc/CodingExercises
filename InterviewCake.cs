@@ -28,6 +28,9 @@ namespace InterviewCake
             /* Foursquare Screen */
             // Foursquare.MaxFunTest();
 
+            /* Facebook */
+            Facebook.GetMinContainingLengthTest();
+
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
             // Greedy.GetMaxStockProfit();
@@ -42,7 +45,7 @@ namespace InterviewCake
             //BinaryTree.IsBSTTest();
             //BinaryTree.GetSecondLargestTest();
             // TODO: Include test methods for Graph.cs
-            Graph.GetShortestPathCostTest();
+            //Graph.GetShortestPathCostTest();
 
 
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
