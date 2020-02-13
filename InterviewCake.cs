@@ -11,6 +11,9 @@ namespace InterviewCake
             // TestMultiDimentional();
             // TestJagged();
 
+            /* Microsoft Screen */
+            //Microsoft.GetDicLowestStringTest();
+
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();
             // Zillow.MicrosoftTest();
@@ -29,7 +32,7 @@ namespace InterviewCake
             // Foursquare.MaxFunTest();
 
             /* Facebook */
-            Facebook.GetMinContainingLengthTest();
+            //Facebook.GetMinContainingLengthTest();
 
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
