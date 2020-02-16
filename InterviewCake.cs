@@ -33,6 +33,7 @@ namespace InterviewCake
 
             /* Facebook */
             //Facebook.GetMinContainingLengthTest();
+            Facebook.WordDiccTest();
 
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
