@@ -89,7 +89,7 @@ namespace InterviewCake
         public static void FindNumberOfCoinComboTest()
         {
             //Console.WriteLine("Total Combinations: " + FindNumberOfCoinCombo(30, new [] {10, 15, 5}));
-            PrintCombos(4, new [] {1, 2, 3}, 0, new LinkedList<int>());
+            Console.WriteLine("Total Combinations: " + GetCombos(4, new [] {1, 2, 3}, 0, new LinkedList<int>()));
         }
 
         public static int FindNumberOfCoinCombo(int amount, int[] coins)
@@ -112,30 +112,27 @@ namespace InterviewCake
         {
             if (amount < 0) 
             {
-                // comboCoins.RemoveLast();
+                //comboCoins.RemoveLast();
                 return 0;
             }
              
             if (amount == 0)
             {
-                // foreach (var item in comboCoins)
-                // {
-                //     System.Console.Write(item + " ");
-                // }
-                // System.Console.WriteLine();
-                System.Console.Write(coins[currCoin] + " ");
+                // foreach (var item in comboCoins) System.Console.Write(item + " ");
+                
                 return 1;
             }
-            System.Console.Write(coins[currCoin] + " ");
+            System.Console.WriteLine(coins[currCoin]);
 
             var combos = 0;
             for (int coin = currCoin; coin < coins.Length; coin++)
             {
-                System.Console.WriteLine();
-                // comboCoins.AddFirst(coins[coin]);
-                var tmp = GetCombos(amount - coins[coin], coins, coin, comboCoins);
+                //System.Console.WriteLine();
+                //comboCoins.AddFirst(coins[coin]);
+                var newAmount = amount - coins[coin];
+                var tmp = GetCombos(newAmount, coins, coin, comboCoins);
                 combos += tmp;
-                // comboCoins.RemoveLast();
+                //comboCoins.RemoveLast();
             }
 
             return combos;
@@ -144,7 +141,10 @@ namespace InterviewCake
         
         private static void PrintCombos(int amount, int[] coins, int currCoin, LinkedList<int> comboCoins)
         {
-            if (amount < 0) return; 
+            if (amount < 0) {
+                comboCoins.RemoveLast();
+                return;
+            }; 
             if (amount == 0)
             {
                 foreach (var item in comboCoins)

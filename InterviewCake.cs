@@ -11,14 +11,21 @@ namespace InterviewCake
             // TestMultiDimentional();
             // TestJagged();
 
+            /**************************************************************
+
+            INTERVIEWS: REAL QUESTIONS (Screens and OnSite)
+
+            ***************************************************************/
+
             /* Microsoft Screen */
             //Microsoft.GetDicLowestStringTest();
+            //Microsoft.GetWordsTest();
 
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();
-            // Zillow.MicrosoftTest();
+            Zillow.IsBSTTest();
 
-            /* Interview.io practice Interview */
+            /* Interview.io (practice Interview) */
             // InterviewIo.TestTriplets();
             
             /* Lowe's Screen */
@@ -31,10 +38,17 @@ namespace InterviewCake
             /* Foursquare Screen */
             // Foursquare.MaxFunTest();
 
-            /* Facebook */
+            /* Facebook On Site*/
             //Facebook.GetMinContainingLengthTest();
-            Facebook.WordDiccTest();
+            //Facebook.WordDiccTest();
+            
 
+            /**************************************************************
+
+            INTERVIEW CAKE COURSE EXERCISES
+
+            ***************************************************************/
+            
             /* 3 - GREEDY ALGORITHMS */
             // Greedy.GetHighestTripletPruductTest();
             // Greedy.GetMaxStockProfit();
@@ -57,7 +71,6 @@ namespace InterviewCake
             //Recursion.PermuteTest();
             //Recursion.FindNumberOfCoinComboTest();
             //Recursion.SubSequencesTest();
-
             //DynamicProgramming.GetMinNumberOfCoinsTest();
             //DynamicProgramming.GetAllNumberOfComboCoinsTest();
             //DynamicProgramming.MaxDuffelBagValueTest();

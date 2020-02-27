@@ -23,6 +23,7 @@ namespace InterviewCake
             }
         }
 
+        // Phone Screen
         public static Dictionary<Char, int> GetOptimalGasPurchase(List<GasInfo> input)
         {
             if (input == null || input.Count == 0)
@@ -65,25 +66,79 @@ namespace InterviewCake
                 GasId = gasId;
                 Miles = miles;
             }
-
-        } 
-
-        public static void MicrosoftTest()
-        {
-            Console.WriteLine(Microsoft(new [] {1,1,3,3}, 2));
         }
 
-        public static bool Microsoft(int[] A, int K) 
+        // On Site
+        public static void IsBSTTest()
         {
-            int n = A.Length;
-            for (int i = 0; i < n - 1; i++) {
-                if (A[i] > K || A[i] != K) // change this line accordingly
-                    return false;
+            /*
+                    10
+                  /    \
+                5       15
+               /  \     /
+              3    7   13
+                  /   /
+                 6   11
+            */
+            var root = new BinaryTreeNode(10);
+            var a = root.InsertLeft(5);
+            var b = root.InsertRight(15);
+            a.InsertLeft(3);
+            a.InsertRight(7).InsertLeft(6);
+            b.InsertLeft(13).InsertLeft(11);
+
+            System.Console.WriteLine(IsBST(root));
+        }
+
+        public static bool IsBST(BinaryTreeNode root)
+        {
+            if (root == null) return true;
+
+            return InOrder(root, new Stack<int>());
+        }
+
+        private static bool InOrder(BinaryTreeNode n, Stack<int> s)
+        {
+            if (n == null) return true;
+
+            if (!InOrder(n.Left, s)) return false;
+            
+            if (s.Count > 0)
+            {
+                if (s.Peek() > n.Value) return false;
+                s.Pop();
             }
-            if (K < A[0] && A[n - 1] < K) // change this line accordingly
-                return false;
-            else
-                return true;
+            s.Push(n.Value);
+            
+            if (!InOrder(n.Right, s)) return false;
+
+            return true;
+        }
+
+        
+        // This class is provided in the exercises
+        public class BinaryTreeNode
+        {
+            public int Value { get; }
+            public BinaryTreeNode Left { get; private set; }
+            public BinaryTreeNode Right { get; private set; }
+
+            public BinaryTreeNode(int value)
+            {
+                Value = value;
+            }
+
+            public BinaryTreeNode InsertLeft(int leftValue)
+            {
+                Left = new BinaryTreeNode(leftValue);
+                return Left;
+            }
+
+            public BinaryTreeNode InsertRight(int rightValue)
+            {
+                Right = new BinaryTreeNode(rightValue);
+                return Right;
+            }
         }
     }
 
