@@ -161,5 +161,53 @@ namespace InterviewCake
                 comboCoins.RemoveLast();
             }
         }
+
+
+        // public static void GetBoxSizesTest()
+        // {
+        //     //var result = GetBoxSizes(5, 3, 9);
+        //     //var result = GetBoxSizes(7, 6, 22);
+        //     var result = GetBoxSizes(7, 6, 26);
+        // }
+
+        // public static long[] GetBoxSizes(long k, long b, long n)
+        // {
+        //     var sizes = new Queue<long>();
+        //     for (var i = 1; i <= n - b; i++)
+        //     {
+        //         for (var j = i; j <= k; j++) sizes.Enqueue(j);
+
+        //         var result = GetNumbers(sizes, b, k, n);
+        //         if (result != null) return result.ToArray();
+        //     }
+        //     return new long[] { -1 };
+        // }
+
+        // private static List<long> GetNumbers(Queue<long> sizes, long trips, long maxSize, long total)
+        // {
+        //     var result = new List<long>();
+
+        //     while (sizes.Count > 0)
+        //     {
+        //         var last = result.Count - 1;
+        //         if (result.Count == trips - 1)
+        //         {
+        //             if (total > result[last] && total <= maxSize)
+        //             {
+        //                 result.Add(total);
+        //                 return result;
+        //             }
+                    
+        //             total += result[last];
+        //             result.RemoveAt(last);
+        //         }
+
+        //         var n = sizes.Dequeue();
+        //         result.Add(n);
+        //         total -= n;
+        //     }
+
+        //     return null;
+        // }
     }
 }

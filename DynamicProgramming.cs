@@ -265,6 +265,62 @@ namespace InterviewCake
             }
             return result;
         }
+
+        public static void GenSizeBoxesMemoTest()
+        {
+            //var memo = GenSizeBoxesMemo(9, 5, 2); // 4, 5
+            //var memo = GenSizeBoxesMemo(9, 5, 3); // 2, 3, 4
+            //var memo = GenSizeBoxesMemo(22, 7, 6); // -1
+            //var memo = GenSizeBoxesMemo(26, 7, 6);
+            //var memo = GenSizeBoxesMemo(10, 3, 3); // -1
+        }
+
+        public static long[] GenSizeBoxesMemo(long n, long k, int b)
+        {
+            var memo = new bool[k + 1][];
+            
+            // Initiallize Col[0] with 1 for all the rows
+            for (var row = 0; row <= k; row++)
+            {   
+                var cols = new bool[n + 1];
+                cols[0] = true;
+                memo[row] = cols;
+            }
+
+            for (var row = 1; row <= k; row++)
+            {
+                for (var col = 1; col <= n; col++)
+                {
+                    if (col < row)
+                        memo[row][col] = memo[row - 1][col];
+                    else
+                        memo[row][col] = memo[row - 1][col - row];
+
+                    if (col == n && memo[row][col])
+                    {
+                        var candidates = GetCandidates(memo, row, n);
+                        if (candidates != null && candidates.Length == b) return candidates;
+                    }
+                }
+            }     
+            return new long[]{ -1 };
+        }
+
+        private static long[] GetCandidates(bool[][] memo, int row, long n)
+        {
+            var candidates = new List<long>();
+            while (n >= 0)
+            {
+                if (n >= row && memo[row][n - row])
+                {
+                    candidates.Add(row);
+                    if (n - row == 0) return candidates.ToArray();
+                    n -= row;
+                }
+                row--;
+            }
+            return null;
+        }
     }
 
     public class CakeType

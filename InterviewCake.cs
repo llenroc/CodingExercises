@@ -23,7 +23,7 @@ namespace InterviewCake
 
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();
-            Zillow.IsBSTTest();
+            // Zillow.IsBSTTest();
 
             /* Interview.io (practice Interview) */
             // InterviewIo.TestTriplets();
@@ -42,6 +42,10 @@ namespace InterviewCake
             //Facebook.GetMinContainingLengthTest();
             //Facebook.WordDiccTest();
             
+            /* Byte by Byte - DP Exercises: https://www.byte-by-byte.com/6-dynamic-programming-questions */
+            //BytebyByte.GetSmalestChangeTest();
+            //BytebyByte.GetLongestCommonSubstringTest();
+            BytebyByte.FibonacciTest();
 
             /**************************************************************
 
@@ -71,6 +75,7 @@ namespace InterviewCake
             //Recursion.PermuteTest();
             //Recursion.FindNumberOfCoinComboTest();
             //Recursion.SubSequencesTest();
+
             //DynamicProgramming.GetMinNumberOfCoinsTest();
             //DynamicProgramming.GetAllNumberOfComboCoinsTest();
             //DynamicProgramming.MaxDuffelBagValueTest();
@@ -78,6 +83,7 @@ namespace InterviewCake
             //DynamicProgramming.LongestPalindromSubsequenceTest();
             //DynamicProgramming.GetMaxProductOfPalindromeSubsequencesTest();
             //DynamicProgramming.LongestIncreasingSubsequenceLengthTest();
+            //DynamicProgramming.GenSizeBoxesMemoTest(); // TODO
 
             /* 7 - Queues and Stacks */
             //QueueStack.PhoneNumberLetterCombinationsTest();
@@ -125,15 +131,15 @@ namespace InterviewCake
                 {0}
             };
 
-//            List<int> result = IndeedFindRectangle.GetRectangle(image3);
+//            List<int> result = Indeed.GetRectangle(image3);
 //            foreach (var number in result)
 //            {
 //                Console.WriteLine(" -> " + number);
 //            }
 
-            //Console.WriteLine(IndeedFindRectangle.IncludeBlank("hello world"));
+            //Console.WriteLine(Indeed.IncludeBlank("hello world"));
 
-            //Console.WriteLine(IndeedFindRectangle.IsBracketsBalanced("{]}"));
+            //Console.WriteLine(Indeed.IsBracketsBalanced("{]}"));
             
             ArrayExercise.MultiDimentional(image1);
         }

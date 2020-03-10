@@ -75,7 +75,7 @@ m: number of columns in the input image
 
 
 */
-  class IndeedFindRectangle {
+  class Indeed {
       public static List<int> GetRectangle(int[,] image)
       {
           List<int> result = new List<int>();
