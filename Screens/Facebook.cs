@@ -122,7 +122,7 @@ namespace InterviewCake
         {
             public Char Value;
             public bool IsFinal;
-            public Dictionary<char, CustomNode> Next;
+            public Dictionary<char, CustomNode> Next; // could be a List<CustomNode> but I used Dictionary in order to have "constant time" lookups [O(1)]
             
             public CustomNode(Char c, bool isFinal)
             {

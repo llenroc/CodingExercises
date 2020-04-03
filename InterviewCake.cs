@@ -20,6 +20,7 @@ namespace InterviewCake
             /* Microsoft Screen */
             //Microsoft.GetDicLowestStringTest();
             //Microsoft.GetWordsTest();
+            Microsoft.GetMaximalNetworkRankTest();
 
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();
@@ -45,7 +46,14 @@ namespace InterviewCake
             /* Byte by Byte - DP Exercises: https://www.byte-by-byte.com/6-dynamic-programming-questions */
             //BytebyByte.GetSmalestChangeTest();
             //BytebyByte.GetLongestCommonSubstringTest();
-            BytebyByte.FibonacciTest();
+            //BytebyByte.FibonacciTest();
+            //BytebyByte.GetBigestSquareSubmatrixTest();
+            //BytebyByte.GetMaxtrixProductTest();
+            //BytebyByte.GetKnapsackTest();
+
+            /* Amazon - OnLine Assesment */
+            //Amazon.GetNumberAmazonTreasureTrucksTest();
+            //Amazon.GetRequiredLinksTest();
 
             /**************************************************************
 
