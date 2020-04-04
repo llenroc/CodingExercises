@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public static class Microsoft
@@ -101,7 +102,44 @@ public static class Microsoft
     */
     public static int GetLongestConcat(string[] A)
     {
-        return 0;
+        var combos = GetPowerSet(A);
+        var result = 0;
+        foreach (var c in combos) result = Math.Max(result, c.Length);
+        return result;
+    }
+
+    /* PowerSer -> Good explication here: https://coderbyte.com/algorithm/print-all-subsets-given-set */
+    public static List<string> GetPowerSet(string[] A) 
+    { 
+        var result = new List<string>();
+        /*set_size of power set of a set with set_size n is (2**n -1) beacuse we will be trating the items a binary*/
+        var powSize = (uint)Math.Pow(2, A.Length); 
+        
+        /*Run from counter 000..0 to 111..1*/
+        for(var i = 0; i < powSize; i++) 
+        { 
+            var tmp = string.Empty;
+            for(var j = 0; j < A.Length; j++) 
+            { 
+                /* Check if jth bit in the counter is set. If set then add jth element from set */
+                if((i & (1 << j)) > 0) tmp += A[j]; 
+            }
+            if (IsValid(tmp)) result.Add(tmp);
+        }
+        return result;
+    } 
+
+    // Specific rule for this exercise
+    private static bool IsValid(string s)
+    {
+        if (s == null || s.Length == 0) return false;
+        var hs = new HashSet<char>();
+        foreach (var c in s)
+        {
+            if (hs.Contains(c)) return false;
+            hs.Add(c);
+        }
+        return true;
     }
 
     public static void GetLongestConcatTest()
@@ -152,9 +190,11 @@ public static class Microsoft
         {
             if (!map.ContainsKey(A[i])) map.Add(A[i], new HashSet<int>());
             map[A[i]].Add(B[i]);
+
             if (!map.ContainsKey(B[i])) map.Add(B[i], new HashSet<int>());
             map[B[i]].Add(A[i]);
         }
+
         var result = 0;
         for (var i = 0; i < A.Length; i++)
         {

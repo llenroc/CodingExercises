@@ -20,7 +20,8 @@ namespace InterviewCake
             /* Microsoft Screen */
             //Microsoft.GetDicLowestStringTest();
             //Microsoft.GetWordsTest();
-            Microsoft.GetMaximalNetworkRankTest();
+            //Microsoft.GetMaximalNetworkRankTest();
+            Microsoft.GetLongestConcatTest();
 
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();
@@ -79,7 +80,6 @@ namespace InterviewCake
 
 
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
-            //Recursion.GetPermutationsTest();
             //Recursion.PermuteTest();
             //Recursion.FindNumberOfCoinComboTest();
             //Recursion.SubSequencesTest();
