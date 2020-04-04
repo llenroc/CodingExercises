@@ -21,7 +21,9 @@ namespace InterviewCake
             //Microsoft.GetDicLowestStringTest();
             //Microsoft.GetWordsTest();
             //Microsoft.GetMaximalNetworkRankTest();
-            Microsoft.GetLongestConcatTest();
+            //Microsoft.GetLongestConcatTest();
+            Microsoft.OnLineTest();
+
 
             /* Zillow Screen */
             // Zillow.GetOptimalGasPurchaseTest();

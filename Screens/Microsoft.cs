@@ -77,7 +77,7 @@ public static class Microsoft
         Console.WriteLine(MicrosoftOnlineTest(new [] {1,1,3,3}, 2));
     }
 
-    #region "OnLine Assesment"
+    #region "1st OnLine Assesment"
     // Change only one line to produce the correct result
     public static bool MicrosoftOnlineTest(int[] A, int K) 
     {
@@ -214,6 +214,97 @@ public static class Microsoft
         var result = GetMaximalNetworkRank(A, B, 6); // 1, 2
 
         System.Console.WriteLine("Maximal Network Rank: " + result);
+    }
+
+    #endregion
+
+
+    #region "2nd OnLine Assesment"
+
+    public static void OnLineTest()
+    {
+        // var input = new [] {1,2};
+        // var result = Exercise(2, 4);
+        // foreach (var item in result)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+        
+        // var input = new [] {5,5,5,5,5};
+        // var result = Exercise2(input);
+        // System.Console.WriteLine(result);
+
+        //System.Console.WriteLine(Exercise3(670));
+        System.Console.WriteLine(Exercise3(-999));
+        //System.Console.WriteLine(Exercise3(0));
+    }
+
+    public static string[] Exercise(int N, int K)
+    {
+        if (N == 0) {
+            return new string[] {""};
+        }
+        var result = new List<String>();
+        foreach (string p in Exercise(N - 1, K - 1)) {
+            foreach (char l in new char[] {'a', 'b', 'c'}) {
+                int pLen = p.Length;
+                if (pLen == 0 || p[pLen - 1] != l) {
+                    result.Add(p + l);
+                }
+            }
+        }
+        int prefSize = Math.Min(result.Count, K);
+        return result.GetRange(0, prefSize).ToArray();
+    }
+
+    public static int Exercise2(int[] A) {
+        // write your code in C# 6.0 with .NET 4.5 (Mono)
+        if (A == null) throw new System.Exception("Null input parameter");
+        if (A.Length < 1) return 0;
+        
+        var freqTable = new Dictionary<int, int>();
+        foreach (var n in A)
+        {
+            if (!freqTable.ContainsKey(n)) freqTable.Add(n,0);
+            freqTable[n]++;
+        }
+        
+        var result = 0;
+        foreach (var entry in freqTable)
+        {
+            if (entry.Key == entry.Value) result = Math.Max(result, entry.Value);
+        }
+        return result;
+    }
+
+
+    public static int Exercise3(int N) {
+        var isNegative = (N < 0);
+        var input = (isNegative) ? (N * -1).ToString() : N.ToString();
+        
+        var result = String.Empty;
+        for (var i = input.Length - 1; i >= 0; i--)
+        {
+            if (i == 0)
+            {
+                result = "5" + input;
+            }
+            else
+            {
+                if (int.Parse(input[i].ToString()) < 5 && int.Parse(input[i - 1].ToString()) > 5)
+                {
+                    result = input.Substring(0, i) + "5" + input[i].ToString() + result;
+                    break;
+                }
+                else
+                {
+                    result = input[i].ToString() + result;
+                }
+            }
+        }
+
+        var res = int.Parse(result);
+        return (isNegative) ? res *= -1 : res;
     }
 
     #endregion
