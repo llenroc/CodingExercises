@@ -239,6 +239,7 @@ public static class Microsoft
         //System.Console.WriteLine(Exercise3(0));
     }
 
+    // Original CODE: Find the BUG and Fix it (modify UP TO 2 lines)
     public static string[] Exercise(int N, int K)
     {
         if (N == 0) {
@@ -277,7 +278,6 @@ public static class Microsoft
         return result;
     }
 
-
     public static int Exercise3(int N) {
         var isNegative = (N < 0);
         var input = (isNegative) ? (N * -1).ToString() : N.ToString();
@@ -285,20 +285,17 @@ public static class Microsoft
         var result = String.Empty;
         for (var i = input.Length - 1; i >= 0; i--)
         {
+            result = input[i].ToString() + result;
             if (i == 0)
             {
-                result = "5" + input;
+                result = "5" + result;
             }
             else
             {
                 if (int.Parse(input[i].ToString()) < 5 && int.Parse(input[i - 1].ToString()) > 5)
                 {
-                    result = input.Substring(0, i) + "5" + input[i].ToString() + result;
+                    result = input.Substring(0, i) + "5" + result;
                     break;
-                }
-                else
-                {
-                    result = input[i].ToString() + result;
                 }
             }
         }

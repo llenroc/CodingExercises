@@ -22,7 +22,7 @@ namespace InterviewCake
             //Microsoft.GetWordsTest();
             //Microsoft.GetMaximalNetworkRankTest();
             //Microsoft.GetLongestConcatTest();
-            Microsoft.OnLineTest();
+            //Microsoft.OnLineTest();
 
 
             /* Zillow Screen */
@@ -56,7 +56,7 @@ namespace InterviewCake
 
             /* Amazon - OnLine Assesment */
             //Amazon.GetNumberAmazonTreasureTrucksTest();
-            //Amazon.GetRequiredLinksTest();
+            Amazon.GetRequiredLinksTest();
 
             /**************************************************************
 
