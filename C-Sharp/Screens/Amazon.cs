@@ -91,6 +91,7 @@ namespace InterviewCake
                 System.Console.WriteLine(item);
             }
         }
+        
         public static int[] GetRequiredLinks(int routers, int links, int[][] input)
         {
             if (input == null || input.Length == 0) throw new System.ArgumentException("Input should have elements");
