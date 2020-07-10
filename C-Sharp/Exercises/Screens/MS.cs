@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public static class Microsoft
+public static class MS
 {
     public static void GetDicLowestStringTest()
     {

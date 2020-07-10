@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // To execute C#, please define "static void Main" on a class
 // named Solution.
 
-namespace InterviewCake
+namespace Exercises
 {
     // Often, tasks have dependencies before they can be completed.  This can be true in real life projects, or in software projects.
     // Because of the dependency between tasks, you may have to work on them in a specific order.

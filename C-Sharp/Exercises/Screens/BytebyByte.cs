@@ -1,6 +1,6 @@
 using System;
 
-namespace InterviewCake
+namespace Exercises
 {
     /* Byte by Byte - DP Exercises: https://www.byte-by-byte.com/6-dynamic-programming-questions */
     public class BytebyByte

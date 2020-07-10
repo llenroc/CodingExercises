@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Collections;
 
-namespace InterviewCake
+namespace Exercises
 {
     [Serializable]
     public class POJO : IEnumerable, IEnumerator

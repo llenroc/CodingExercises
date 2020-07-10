@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InterviewCake
+namespace Exercises
 {
     public static class Recursion
     {

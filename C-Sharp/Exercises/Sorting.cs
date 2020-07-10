@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InterviewCake
+namespace Exercises
 {
     public static class Sorting
     {

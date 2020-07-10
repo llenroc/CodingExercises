@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InterviewCake
+namespace Exercises
 {
 /*
 Imagine we have an image. We'll represent this image as a simple 2D array where every pixel is a 1 or a 0. The image you get is known to have a single rectangle of 0s on a background of 1s.
@@ -337,7 +337,7 @@ find_pairs(student_course_pairs_2) =>
         List<Tuple<string, string>> pairs)
     {
         var result = new List<Tuple<Tuple<string, string>, string[]>>();
-        var index = 0;
+        // var index = 0;
         foreach (var t in pairs)
         {
             var list = new List<string>();

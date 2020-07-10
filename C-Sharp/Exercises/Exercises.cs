@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InterviewCake
+namespace Exercises
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace InterviewCake
             ***************************************************************/
 
             /* Microsoft Screen */
-            //Microsoft.GetDicLowestStringTest();
+            //MS.GetDicLowestStringTest();
             //Microsoft.GetWordsTest();
             //Microsoft.GetMaximalNetworkRankTest();
             //Microsoft.GetLongestConcatTest();
@@ -55,9 +55,9 @@ namespace InterviewCake
             //BytebyByte.GetKnapsackTest();
 
             /* Amazon - OnLine Assesment */
-            //Amazon.GetNumberAmazonTreasureTrucksTest();
-            Amazon.GetRequiredLinksTest();
-
+            Amazon.GetNumberAmazonTreasureTrucksTest();
+            // Amazon.GetRequiredLinksTest();
+            
             /**************************************************************
 
             INTERVIEW CAKE COURSE EXERCISES

@@ -27,7 +27,7 @@ using System.Collections.Generic;
 // 10 | 10 | 5, 4
 // 25    44   53
 
-namespace InterviewCake
+namespace Exercises
 {
     public class Strivr
     {
