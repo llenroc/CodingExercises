@@ -5,17 +5,6 @@ namespace Exercises
 {
     public static class DynamicProgramming
     {
-        public static void GetAllNumberOfComboCoinsTest()
-        {
-            Console.WriteLine(GetAllNumberOfComboCoins(30, new [] {10, 15, 5}));
-        }
-
-        public static void GetMinNumberOfCoinsTest()
-        {
-            //Console.WriteLine(GetMinNumberOfCoins(30, new [] {25, 15, 1}));
-            Console.WriteLine(GetMinNumberOfCoins(10, new [] {3, 5, 2}));
-        }
-
         public static void MaxDuffelBagValueTest()
         {
             var cakes = new CakeType[] {
@@ -27,108 +16,6 @@ namespace Exercises
             System.Console.WriteLine(MaxDuffelBagValue(cakes, 20));
         }
 
-        public static void GenMinNumberOfCoinsComboTest()
-        {
-            Console.WriteLine(GenMinNumberOfCoinsCombo(11, new [] {3, 5, 2}));
-        }
-
-        public static int GetAllNumberOfComboCoins(int amount, int[] coins)
-        {
-            if (coins == null || amount < 0) throw new System.ArgumentException("Coins can not be null and amount shoul be positive"); 
-            
-            var countTable = new int[amount + 1];
-            countTable[0] = 1;
-
-            foreach (var c in coins)
-            {
-                for (var i = 1; i < countTable.Length; i++)
-                {
-                    if (i >= c)
-                    {
-                        countTable[i] += countTable[i - c]; 
-                    }
-                }
-            }
-
-            return countTable[amount];
-        }
-
-        public static int GetMinNumberOfCoins(int amount, int[] coins)
-        {
-            if (coins == null || amount < 0) throw new System.ArgumentException("Coins can not be null and amount shoul be positive"); 
-            
-            var memo = new int[amount + 1];
-            memo[0] = 0;
-
-            for (var i = 1; i < memo.Length; i++)
-            {
-                memo[i] = int.MaxValue; 
-            }
-
-            for (var i = 1; i < memo.Length; i++)
-            {
-                foreach (var c in coins)
-                {
-                    if (c <= i && memo[i - c] != int.MaxValue &&  memo[i - c] + 1 < memo[i])
-                    {
-                        memo[i] = memo[i - c] + 1;
-                    }
-                }
-            }
-
-            return memo[amount];
-        }
-
-        public static List<int> GenMinNumberOfCoinsCombo(int amount, int[] coins)
-        {
-            var result = new List<int>();
-            var memo = GenMinNumberOfCoinsComboMemo(amount, coins);
-
-            for (var row = 0; row < coins.Length; row++)
-            {
-                for (var i = row; i < coins.Length; row++)
-                {
-
-                }
-            }
-
-            return result;
-        }
-
-        private static int[][] GenMinNumberOfCoinsComboMemo(int amount, int[] coins)
-        {
-            var memo = new int[coins.Length][];
-            
-            // Initiallize Col[0] with 1 for all the rows
-            for (var row = 0; row < coins.Length; row++)
-            {   
-                var cols = new int[amount + 1];
-                cols[0] = 0;
-                for (int i = 1; i < cols.Length; i++)
-                {
-                    cols[i] = int.MaxValue;
-                }
-                memo[row] = cols;
-            }
-
-            for (var col = 1; col <= amount; col++)
-            {
-                var row = 0;
-                foreach (var c in coins)
-                {
-                    if (row > 0 && memo[row][col] == int.MaxValue && memo[row - 1][col] != int.MaxValue)
-                    {
-                        memo[row][col] = memo[row - 1][col];
-                    }
-                    if (c <= col && memo[row][col - c] != int.MaxValue &&  memo[row][col - c] + 1 < memo[row][col])
-                    {
-                        memo[row][col] = memo[row][col - c] + 1;
-                    }
-                    row++;
-                }
-            }           
-            return memo;
-        }
 
         public static long MaxDuffelBagValue(CakeType[] cakes, int bagWeightCapacity)
         {
