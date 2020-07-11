@@ -1,0 +1,7 @@
+{
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.snippetSuggestions": "none",
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.shareSuggestSelections": true
+}

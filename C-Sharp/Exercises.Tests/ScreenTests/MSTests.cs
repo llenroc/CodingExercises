@@ -1,9 +1,9 @@
 using System;
 using Xunit;
 
-namespace Exercises.Tests
+namespace Screen.Tests
 {
-    public class UnitTest1
+    public class MSTests
     {
         [Fact]
         public void Test1()
