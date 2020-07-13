@@ -5,48 +5,6 @@ namespace Exercises
 {
     public static class QueueStack
     {
-        // table[i] stores all characters that corresponds to ith digit in phone
-        public static String[] table = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" }; 
-
-        public static void PhoneNumberLetterCombinationsTest() 
-        {
-            var phoneNumber = new []{ 5, 3 };
-            var result = PhoneNumberLetterCombinations(phoneNumber, phoneNumber);
-            foreach (var item in result)
-            {
-                System.Console.WriteLine(item);
-            }
-        } 
-        
-        // From https://www.geeksforgeeks.org/iterative-letter-combinations-of-a-phone-number/
-        public static List<string> PhoneNumberLetterCombinations(int[] phoneNumber, int[] n)
-        {
-            var result = new List<string>();
-            var q = new Queue<string>();
-            
-            q.Enqueue("");
-
-            while (q.Count > 0)
-            {
-                var s = q.Dequeue();
-                if (s.Length == n.Length)
-                {
-                    result.Add(s);
-                }
-                else
-                {
-                    var digit = phoneNumber[s.Length];
-                    var chars = table[digit];
-                    for (var i = 0; i < chars.Length; i++)
-                    {
-                        q.Enqueue(s + chars[i]);
-                    }
-                }
-            }
-
-            return result;
-        }
-
         public static void FindMazeExitTest()
         {
             int[][] jagged = new int[5][];
