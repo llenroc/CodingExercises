@@ -55,7 +55,7 @@ namespace Exercises
             //BytebyByte.GetKnapsackTest();
 
             /* Amazon - OnLine Assesment */
-            Amazon.GetNumberAmazonTreasureTrucksTest();
+            // Amazon.GetNumberAmazonTreasureTrucksTest();
             // Amazon.GetRequiredLinksTest();
             
             /**************************************************************
@@ -82,7 +82,8 @@ namespace Exercises
 
 
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
-            //Recursion.PermuteTest();
+            // Recursion.PermuteTest();
+            Recursion.GetCombinationTests();
             //Recursion.FindNumberOfCoinComboTest();
             //Recursion.SubSequencesTest();
 
