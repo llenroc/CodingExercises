@@ -5,78 +5,10 @@ namespace Exercises
 {
     public static class Recursion
     {
-        public static void PermuteTest()
-        {
-            var result = Permute("dom");
-            System.Console.WriteLine("Total Permutations: " + result.Count);
-            foreach (var s in result)
-            {
-                Console.WriteLine(s);
-            }
-        }
-
-        // Easiest implementation and very friendly to read/understand (Cons: Bad performance)
-        public static HashSet<string> Permute(string s)
-        {
-            if (s.Length <= 1) return new HashSet<string>(){s};
-
-            var result = new HashSet<string>();
-            var fisrt = s[0];
-            var remainder = s.Substring(1);
-            var words = Permute(remainder);
-            foreach(var w in words)
-            {
-                for (var i = 0; i <= w.Length; i++) // use "<=" because we are adding 1 char to the word len ("first") 
-                {
-                    result.Add(w.Substring(0, i) + fisrt + w.Substring(i));
-                }
-            }
-            return result;
-        }
-
-        public static void GetCombinationTests()
-        {
-            List<int> list = new List<int> { 1, 2, 3, 4 };
-            GetCombination(list);
-        }
-
-        private static void GetCombination(List<int> list)
-        {
-            double count = Math.Pow(2, list.Count);
-            for (int i = 1; i <= count - 1; i++)
-            {
-                for (int j = 0; j < list.Count; j++)
-                {
-                    int b = i & (1 << j);
-                    if (b > 0)
-                    {
-                        Console.Write(list[j]);
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-        
         public static void FindNumberOfCoinComboTest()
         {
             //Console.WriteLine("Total Combinations: " + FindNumberOfCoinCombo(30, new [] {10, 15, 5}));
             Console.WriteLine("Total Combinations: " + GetCombos(4, new [] {1, 2, 3}, 0, new LinkedList<int>()));
-        }
-
-        public static int FindNumberOfCoinCombo(int amount, int[] coins)
-        {
-            var result = 0;
-
-            System.Console.WriteLine("Amount: $" + amount);
-            System.Console.Write("Coins: ");
-            foreach (var item in coins)
-            {
-                System.Console.Write(item + " ");
-            }
-            System.Console.WriteLine();
-            result = GetCombos(amount, coins, 0, new LinkedList<int>());
-
-            return result;
         }
 
         private static int GetCombos(int amount, int[] coins, int currCoin, LinkedList<int> comboCoins)

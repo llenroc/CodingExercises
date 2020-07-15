@@ -82,8 +82,6 @@ namespace Exercises
 
 
             /* 6 - DYNAMIC PROGRAMMING AND RECURSION */
-            // Recursion.PermuteTest();
-            Recursion.GetCombinationTests();
             //Recursion.FindNumberOfCoinComboTest();
             //Recursion.SubSequencesTest();
 
