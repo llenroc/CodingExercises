@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Screen.Tests
 {
-    public class TPhoneNumberPadTests
+    public class PhoneNumberPadTests
     {
         [Fact]
         public void GetAllComboTests_returnsCobinations()
