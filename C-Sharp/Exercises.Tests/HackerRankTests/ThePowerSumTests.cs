@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace InterviewCake.Tests
+namespace HackerRank.Tests
 {
     public class ThePowerSumTests
     {
