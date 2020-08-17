@@ -11,12 +11,12 @@ namespace CTCI.Tests
             int[] input = new int[] { 3, 5, 6, 9, 10 };
 
             // Act
-            var result = ChapterFour_TreesGraphs.CreateBSTFromArray(input);
+            BinarySearchTree result = ChapterFour_TreesGraphs.CreateBSTFromArray(input);
             
             // Assert
-            Assert.Equal(result.Root.L.Data, 5);
-            Assert.Equal(result.Root.Data, 6);
-            Assert.Equal(result.Root.R.Data, 9);
+            Assert.Equal(result.Root.L.Data, input[1]);
+            Assert.Equal(result.Root.Data, input[2]);
+            Assert.Equal(result.Root.R.Data, input[3]);
         }
 
         [Fact]
@@ -26,12 +26,12 @@ namespace CTCI.Tests
             int[] input = new int[] { 0, 3, 4, 5, 6, 9, 10, 25, 30, 99 };
 
             // Act
-            var result = ChapterFour_TreesGraphs.CreateBSTFromArray(input);
+            BinarySearchTree result = ChapterFour_TreesGraphs.CreateBSTFromArray(input);
             
             // Assert
-            Assert.Equal(result.Root.L.Data, 4);
-            Assert.Equal(result.Root.Data, 9);
-            Assert.Equal(result.Root.R.Data, 25);
+            Assert.Equal(result.Root.L.Data, input[2]);
+            Assert.Equal(result.Root.Data, input[5]);
+            Assert.Equal(result.Root.R.Data, input[7]);
         }
     }
 }

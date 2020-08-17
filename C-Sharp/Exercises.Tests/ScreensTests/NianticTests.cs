@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Screen.Tests
+namespace Screens.Tests
 {
     public class NianticTests
     {

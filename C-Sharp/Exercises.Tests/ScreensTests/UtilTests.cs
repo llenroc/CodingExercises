@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace InterviewCake.Tests
+namespace Screens.Tests
 {
     public class UtilTests
     {

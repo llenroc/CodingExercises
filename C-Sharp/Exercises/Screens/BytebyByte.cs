@@ -1,6 +1,6 @@
 using System;
 
-namespace Exercises
+namespace Screens
 {
     /* Byte by Byte - DP Exercises: https://www.byte-by-byte.com/6-dynamic-programming-questions */
     public class BytebyByte
@@ -179,48 +179,32 @@ namespace Exercises
             return memoMax[rows-1][cols-1];        
         }
 
-        public static void GetKnapsackTest()
+        public static int Knapsack(Item[] items, int maxWeigth)
         {
-            //(w:1, v:6), (w:2, v:10), (w:3, v:12)
-            var items = new [] {
-                new Item(1, 6),
-                new Item(2, 10),
-                new Item(3, 12)
-            };
-            System.Console.WriteLine("Max Possible Value: " + GetKnapsack(items, 5));
-        }
-
-        /* Given a list of items with values and weights, as well as a max weight, find the maximum value you can generate from items where the sum of the weights is less than the max */
-        public static int GetKnapsack(Item[] items, int maxWeigth)
-        {
-            var memo = new int[items.Length + 1][];
-            for (var i = 0; i < memo.Length; i++) memo[i] = new int[maxWeigth + 1];
-
-            for (var i = 0; i < items.Length; i++)
+            int[] memo = new int[maxWeigth + 1];
+            foreach (Item item in items)
             {
-                var w = items[i].Weight;
-                var v = items[i].Value;
-                for (var currMaxWeigth = 1; currMaxWeigth <= maxWeigth; currMaxWeigth++)
+                for (int i = 0; i <= maxWeigth; i++)
                 {
-                    var row = i + 1;
-                    memo[row][currMaxWeigth] = (w > currMaxWeigth) ? memo[row - 1][currMaxWeigth] : 
-                        Math.Max(memo[row - 1][currMaxWeigth], memo[row - 1][currMaxWeigth - w] + v);
+                    if (i < item.Value) continue;
+                    memo[i] = Math.Max(memo[i], (memo[i - item.Value] + item.Value));
                 }
             }
-
-            return memo[items.Length][maxWeigth];
+            return memo[maxWeigth];
         }
 
-        public class Item
-        {
-            public int Weight { get; set; }
-            public int Value { get; set; }
 
-            public Item(int w, int v)
-            {
-                Weight = w;
-                Value = v;
-            }
+    }
+
+    public class Item
+    {
+        public int Weight { get; set; }
+        public int Value { get; set; }
+
+        public Item(int w, int v)
+        {
+            Weight = w;
+            Value = v;
         }
     }
 }
