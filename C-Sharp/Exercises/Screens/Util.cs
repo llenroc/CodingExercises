@@ -24,6 +24,73 @@ public static class Util
         return result;
     }
 
+    public static List<List<string>> GetWordsCombos(this List<string> s)
+    {
+        List<List<string>> permutations = s.GetWordsPermutations();
+
+        HashSet<List<string>> combos = new HashSet<List<string>>();
+        for (int i = 0; i < s.Count - 1; i++)
+        {
+            foreach (var words in permutations)
+            {
+                var tmp = new List<string>();
+                for (var j = 0; j <= i && j < words.Count; j++) tmp.Add(words[j]);
+
+                if (!combos.Contains(tmp)) combos.Add(tmp);
+            }
+        }
+
+        foreach (var item in combos) permutations.Add(item);
+        return permutations;
+    }
+
+
+    public static List<List<string>> GetWordsPermutations(this List<string> s)
+    {
+        if (s.Count <= 1)
+        {
+            var tmp = new List<string>(s);
+            var x = new List<List<string>>(); 
+            x.Add(tmp);
+            return x;
+        }
+
+        List<List<string>> result = new List<List<string>>();
+
+        // get firts char and remainder
+        string c = s[0];
+        List<string> remainder = new List<string>();
+        for (int i = 1; i < s.Count; i++) remainder.Add(s[i]);
+
+        // call permute using remainder (asign to words)
+        List<List<string>> words = remainder.GetWordsPermutations();
+
+        // for each w in words
+        foreach (List<string> w in words)
+        {
+            string[] stringArray = w.ToArray();
+            // for each char in w, create the string using the index to get substrings: Before and After
+            for (int i = 0; i <= stringArray.Length; i++)
+            {
+
+                List<string> before = new List<string>();
+                for (int ini = 0; ini < i; ini++) before.Add(stringArray[ini]);
+
+                List<string> after = new List<string>();
+                for (int ini = i; ini < stringArray.Length; ini++) after.Add(stringArray[ini]);
+                
+                List<string> tmp = new List<string>();
+                foreach (var item in before) tmp.Add(item);
+                tmp.Add(c);
+                foreach (var item in after) tmp.Add(item);
+
+                result.Add(tmp);
+            }
+        }
+            
+        return result;
+    }
+
     public static HashSet<string> GetPermutations(this string s)
     {
         if (s.Length <= 1) return new HashSet<string>() { s }; 
