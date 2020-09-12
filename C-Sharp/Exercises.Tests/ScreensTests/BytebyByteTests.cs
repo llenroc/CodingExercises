@@ -23,7 +23,7 @@ namespace Screens.Tests
             Assert.Equal(expected, result);
         }
 
-                [Fact]
+        [Fact]
         public void KnapsackTest_withUnsortedItemsReturnsMaxValue()
         {
             // Arrange

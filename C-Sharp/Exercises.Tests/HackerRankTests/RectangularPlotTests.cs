@@ -4,7 +4,6 @@ namespace HackerRank.Tests
 {
     public class RectangularPlotTets
     {
-        [Fact]
         public void GetMaxPerimeterTests()
         {
             // Arrange
@@ -21,7 +20,6 @@ namespace HackerRank.Tests
             Assert.Equal(expected, result);
         }
         
-        [Fact]
         public void GetMaxPerimeter()
         {
             // Arrange
@@ -40,7 +38,6 @@ namespace HackerRank.Tests
             Assert.Equal(expected, result);
         }
 
-        [Fact]
         public void GetMaxPerimeter_restursValidNumber()
         {
             // Arrange

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Exercises
+namespace Screens
 {
     public static class Amazon
     {
@@ -120,6 +120,32 @@ namespace Exercises
                 if (visited.Count < links - 1) result.Add(i);
             }
             return result.ToArray();
+        }
+
+        public static string RunLengthEncoding(string s)
+        {
+            string result = string.Empty;
+
+            char prev = s[0];
+            int counter = 1;
+
+            for (int i = 1; i < s.Length; i++)
+            {
+                if (s[i] == prev)
+                {
+                    counter++;
+                }
+                else
+                {
+                    result += counter.ToString() + prev.ToString();
+                    counter = 1;
+                }
+                prev = s[i];
+            }
+
+            result += counter.ToString() + prev.ToString();
+
+            return result;
         }
 
     }
