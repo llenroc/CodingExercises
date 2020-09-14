@@ -10,12 +10,13 @@ namespace HackerRank
             List<int[]> idsPerCountry = GetIdsPerCountry(n, astronaut);
 
             int result = 0;
-            for (int i = 0; i < idsPerCountry.Count - 1; i++)
+            int sum = 0;
+            foreach(int[] item in idsPerCountry)
             {
-                List<int[]> tmp = new List<int[]>();
-                for (int j = i; j < idsPerCountry.Count; j++) tmp.Add(idsPerCountry[j]);
-                result += GetPairCombosDiffCountry(tmp);    
-            }
+                int size = item.Length;
+                result += sum * size;
+                sum += size;    
+            }   
             return result;
         }
 
