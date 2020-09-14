@@ -62,22 +62,5 @@ namespace HackerRank
 
             return result;
         }
-
-        private static int GetPairCombosDiffCountry(List<int[]> idsPerCountry)
-        {
-            int result = 0;
-            int ini = -1;
-            foreach (var item in idsPerCountry)
-            {
-                if (ini == -1)
-                {
-                    ini = item.Length;
-                    continue;
-                }
-                
-                result += ini * item.Length;
-            }
-            return result;
-        }
     }
 }
