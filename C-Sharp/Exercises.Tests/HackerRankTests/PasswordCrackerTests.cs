@@ -3,7 +3,7 @@ using Xunit;
 
 namespace HackerRank.Tests
 {
-    public class PasswordCrackerTets
+    public class PasswordCrackerTests
     {
         [Fact]
         public void GetPasswordCrackerTest_returnsTrue()
