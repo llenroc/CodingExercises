@@ -8,17 +8,22 @@ namespace Exercises
         public static List<TreeNode> GetDiffNodes(TreeNode a, TreeNode b)
         {
             if (a.Data != b.Data) return new List<TreeNode>() { a, b };
-
+            
+            List<TreeNode> result = new List<TreeNode>();
+            
+            // Queues are use to traverse both trees in a BFS way
             Queue<TreeNode> qa = new Queue<TreeNode>();
             qa.Enqueue(a);
             Queue<TreeNode> qb = new Queue<TreeNode>();
             qb.Enqueue(b);
             
-            List<TreeNode> result = new List<TreeNode>();
-            
             while (qa.Count > 0)
             {
+                // Get a list of the childrens that are in neither node
                 HashSet<int> differentChildren = CompareChildren(qa.Peek().Children, qb.Peek().Children);
+
+                // Enqueue only childrens that are the same for the current level
+                // if child is different then is appended to the result variable
                 ProcessChildren(qa, differentChildren, result);
                 ProcessChildren(qb, differentChildren, result);
             }
@@ -53,9 +58,7 @@ namespace Exercises
 
             return differentChildren;
         }
-
     }
-
 
     public class TreeNode
     {
